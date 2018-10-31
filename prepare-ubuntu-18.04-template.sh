@@ -6,7 +6,7 @@
 # TESTED ON UBUNTU 18.04 LTS
 
 # SETUP & RUN
-# curl -sL https://raw.githubusercontent.com/jimangel/ubuntu-18.04-scripts/master/prepare-ubuntu-18.04-template.sh | sudo -E bash -
+# curl -sL https://raw.githubusercontent.com/zyun-i/ubuntu-18.04-scripts/master/prepare-ubuntu-18.04-template.sh | sudo -E bash -
 
 if [ `id -u` -ne 0 ]; then
 	echo Need sudo
@@ -57,7 +57,7 @@ cat << 'EOL' | sudo tee /etc/rc.local
 
 # dynamically create hostname (optional)
 if hostname | grep localhost; then
-    hostnamectl set-hostname "$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')"
+    hostnamectl set-hostname "$(head /dev/urandom | tr -dc a-z0-9 | head -c 13 ; echo '')"
 fi
 
 test -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
