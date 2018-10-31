@@ -82,7 +82,8 @@ sudo sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
 
 # set dhcp to use mac - this is a little bit of a hack but I need this to be placed under the active nic settings
 # also look in /etc/netplan for other config files
-sed -i "/^ *dhcp4: true$/i \            dhcp-identifier: mac" /etc/netplan/50-cloud-init.yaml
+cp /run/systemd/network/10-netplan-ens* /etc/systemd/network/
+sed -i -e '/\[DHCP\]/a\' -e 'ClientIdentifier=mac' /etc/systemd/network/10-netplan-*
 
 # cleans out all of the cloud-init cache / logs - this is mainly cleaning out networking info
 sudo cloud-init clean --logs
