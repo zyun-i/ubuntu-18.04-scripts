@@ -76,9 +76,8 @@ hostnamectl set-hostname localhost
 #cleanup apt
 apt clean
 
-# disable swap
-sudo swapoff --all
-sudo sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
+# cloud-init
+echo apt_preserve_sources_list: false >> /etc/cloud/cloud.cfg
 
 # set dhcp to use mac - this is a little bit of a hack but I need this to be placed under the active nic settings
 # also look in /etc/netplan for other config files
