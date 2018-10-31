@@ -77,7 +77,7 @@ hostnamectl set-hostname localhost
 apt clean
 
 # cloud-init
-echo apt_preserve_sources_list: false >> /etc/cloud/cloud.cfg
+echo apt_preserve_sources_list: false >> /var/lib/cloud/seed/nocloud-net/user-data
 
 # set dhcp to use mac - this is a little bit of a hack but I need this to be placed under the active nic settings
 # also look in /etc/netplan for other config files
